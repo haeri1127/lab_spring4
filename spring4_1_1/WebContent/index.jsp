@@ -7,6 +7,6 @@
 <title>test</title>
 </head>
 <body>
-ㅎㅇ
+spring4.x 테스트 성공!
 </body>
 </html>
