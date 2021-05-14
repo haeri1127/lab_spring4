@@ -21,4 +21,22 @@ public class Sonata {
 	public String toString() {
 		return "자동차 정보 출력하기";
 	}
+	public String getCarColor() {
+		return carColor;
+	}
+	public int getWheelNum() {
+		return wheelNum;
+	}
+	public int getSpeed() {
+		return speed;
+	}
+	public void setCarColor(String carColor) {
+		this.carColor = carColor;
+	}
+	public void setWheelNum(int wheelNum) {
+		this.wheelNum = wheelNum;
+	}
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
 }
