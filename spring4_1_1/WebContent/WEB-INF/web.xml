@@ -19,6 +19,8 @@
 	</listener>
 
 	<!-- Processes application requests -->
+	<!-- 디스패쳐. .sp4로 들어오는 모든것들을 얘가 인터셉트 해서 처리함.(FrontController) -->
+	<!-- 어느 컨트롤러에 뿌려줄까? 그리고 그 리턴값을 어느 view에 뿌려줄까? -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name> <!-- org.도메인.패키지.표준.class(디스패쳐서블릿) -->
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
