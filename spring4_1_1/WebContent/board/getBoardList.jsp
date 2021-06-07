@@ -22,17 +22,21 @@
 			url:'jsonGetBoardList.sp4',
 		});
 	}
+	function ins(){
+	    console.log("입력창 호출");
+	    $('#dlg_ins').dialog('open')
+	}
 </script>
 </head>
 <body>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('#dg_board').datagrid({
-			toolbar:'#tb_board2'
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#dg_board').datagrid({
+				toolbar:'#tb_board2'
+			});
 		});
-	});
-</script>
-	<table id="dg_board" class="easyui-datagrid" data-options="title:'게시판',toolbar:'#tb_board'" style="width:500px; height:350px">
+	</script>
+	<table id="dg_board" class="easyui-datagrid" data-options="title:'게시판'" style="width:500px; height:350px">
     	<thead>
 	        <tr>
 	            <th data-options="field:'BM_NO'">글번호</th>
@@ -43,11 +47,31 @@
 	        </tr>
 	    </thead>
 	</table>
-	<div id="tb_board" style="padding:2px 5px;">
+	<div id="tb_board2" style="padding:2px 5px;">
         <a href="javascript:search()" class="easyui-linkbutton" iconCls="icon-search" plain="true">조회</a>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true">입력</a>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-pencil" plain="true">수정</a>
+        <a href="javascript:ins()" class="easyui-linkbutton" iconCls="icon-add" plain="true">입력</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true">수정</a>
         <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" plain="true">삭제</a>
     </div>
+    <!-- ================================== [[글쓰기 화면 시작]] =============================================== -->
+    <div id="dlg_ins" class="easyui-dialog" title="글쓰기" data-options="iconCls:'icon-save', closed:'true'" style="width:700px;height:400px;padding:10px">
+	        <div style="margin-bottom:20px">
+	            <input class="easyui-textbox" label="Email:" labelPosition="top" data-options="prompt:'Enter a email address...',validType:'email'" style="width:100%;">
+	        </div>
+	        <div style="margin-bottom:20px">
+	            <input class="easyui-textbox" label="First Name:" labelPosition="top" style="width:100%;">
+	        </div>
+	        <div style="margin-bottom:20px">
+	            <input class="easyui-textbox" label="Last Name:" labelPosition="top" style="width:100%;">
+	        </div>
+	        <div style="margin-bottom:20px">
+	            <input class="easyui-textbox" label="Company:" labelPosition="top" style="width:100%;">
+	        </div>
+	        <div>
+	            <a href="#" class="easyui-linkbutton" iconCls="icon-ok" style="width:100%;height:32px">Register</a>
+	        </div>
+    </div>
+    
+    <!-- ================================== [[글쓰기 화면   끝]] =============================================== -->
 </body>
 </html>
