@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    let color = ["skyblue","violet","black","yellow"]; //배열의 형태는 [대괄호], Object계열은 {중괄호}
+    let i = 0;
+    function changeColor(){
+      i++;
+      if(i >= color.length){
+        i=0;
+      } ////////////////end of if
+      const bodyTag = document.getElementById("theBody");
+      bodyTag.style.backgroundColor = color[i];
+    }//////////////////end id changeColor
+  </script>
+</head>
+<body id="theBody">
+  <button onClick="changeColor();">배경색 바꾸기</button>
+</body>
+</html>

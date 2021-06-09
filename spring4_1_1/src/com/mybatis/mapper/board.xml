@@ -18,7 +18,16 @@
 		<result property="bs_file" column="bs_file" />
 		<result property="bs_size" column="bs_size" />
 	</resultMap>
-
+	<insert id="boardMInsert" parameterType="map">
+		INSERT INTO board_master2019(bm_no, bm_title, bm_writer, bm_email
+		                           , bm_content, bm_date, bm_group, bm_pos, bm_step, bm_pw) 
+		                      values(#{bm_no},#{bm_title},#{bm_writer},#{bm_email}
+		                           , #{bm_content}, to_char(sysdate, 'YYYY-MM-DD'), 0,0,0,#{bm_pw}
+		                            )
+	</insert>
+	<insert id="boardSInsert" parameterType="map">
+		INSERT INTO board_sub2019(bm_no,bs_seq,bs_file,bs_size) values(#{bm_no},#{bs_seq},#{bs_file},#{bs_size})
+	</insert>
 	<select id="getBoardList" parameterType="map" resultType="map">
 		SELECT bm.bm_no, bm.bm_title, bm.bm_date, bs.bs_file, bm.bm_hit
 		FROM board_master2019 bm
@@ -35,4 +44,5 @@
 	<select id="test" parameterType="map" resultType="string">
 		select TO_CHAR(sysdate, 'YYYY-MM-DD') from dual
 	</select>
+    
 </mapper>

@@ -36,9 +36,9 @@ public class Board41Controller extends MultiActionController {
 	// ModelAndView가 있는데 굳이 파라미터에 req,res가 있어야만 한다 그렇지 않으면 매핑을 해주지 않을 것이라고
 	// 말하는 것은 앞뒤가 맞지 않는 것이다. 이상한 태도를 보이는 것이죠
 	// 굳이 없어도 되는 것을 형식적으로 가지고 있어야 한다. doGet안에 있는 것이니까 너도 있어야 해줄거야? 라고 말하는 것이죠
-	
-	//1. ModelAndView로 반환하는 경우
-	//ModelAndView를 만나 WEB-INF에 간다
+
+	// 1. ModelAndView로 반환하는 경우
+	// ModelAndView를 만나 WEB-INF에 간다
 	public ModelAndView getBoardList(HttpServletRequest req, HttpServletResponse res)
 								throws Exception {
 		logger.info("getBoardList 호출 성공");
@@ -47,16 +47,16 @@ public class Board41Controller extends MultiActionController {
 		hmb.bind(target);
 		List<Map<String, Object>> boardList = null;
 		boardList = boardLogic.getBoardList(target);// where bm_no=? and bm_title LIKE '%'||?||'%'
-		logger.info("boardList: "+boardList);
+		logger.info("boardList: " + boardList);
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("board/getBoardList");  //이것이 UI/UX가 된다, 페이지 이름
+		mav.setViewName("board/getBoardList"); // 이것이 UI/UX가 된다, 페이지 이름
 		mav.addObject("boardList", boardList);
 		// RequestDispatcher view = req.getRequestDispatcher("getBoardList.jsp");
 		// view.forward(req, res);
 		return mav;
 	}
-	
-	//2.json으로 반환하는 경우
+
+	// 2.json으로 반환하는 경우
 	// json으로 내보내준다. - @RestController:String, @Controller:void, ModelAndView,
 	// String
 	public void jsonGetBoardList(HttpServletRequest req, HttpServletResponse res)
@@ -69,5 +69,23 @@ public class Board41Controller extends MultiActionController {
 		PrintWriter	out		= res.getWriter();
 		res.setContentType("application/json;charset=utf-8");
 		out.print(imsi);
-	};
+	}
+
+	public void boardInsert(HttpServletRequest req, HttpServletResponse res)
+								throws Exception {
+		logger.info("boardInsert 호출 성공");
+		HashMapBinder hmb = new HashMapBinder(req);
+		Map<String,Object> pmap = new HashMap<>();
+		//사용자가 입력한 값이나 서버에서 클라이언트에게 요청한 값 넘김.
+		hmb.bind(pmap);
+		int result = 0;
+		result = boardLogic.boardInsert(pmap);
+		if(result == 1) {
+			res.sendRedirect("./getBoardList.jsp");
+		}
+		else {
+			res.sendRedirect("./boardInsertFail.jsp");
+		}
+	}
+	
 }

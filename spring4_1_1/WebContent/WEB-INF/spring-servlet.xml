@@ -23,6 +23,7 @@
 				<!-- 이 URL요청 값을 저 컨트롤러에 던지셈 -->
 				<prop key="/board/getBoardList.sp4">board-controller</prop>
 				<prop key="/board/jsonGetBoardList.sp4">board-controller</prop>
+				<prop key="/board/boardInsert.sp4">board-controller</prop>
 				<prop key="/di/getEmpList.sp4">emp-controller</prop> <!-- 이 key에 대한 값이 emp-controller이다 -->
 				<prop key="/di/empInsert.sp4">emp-controller</prop>
 				<prop key="/di/empUpdate.sp4">emp-controller</prop>
@@ -35,6 +36,7 @@
 			<props>
 				<prop key="/board/getBoardList.sp4">getBoardList</prop> 
 				<prop key="/board/jsonGetBoardList.sp4">jsonGetBoardList</prop> 
+				<prop key="/board/boardInsert.sp4">boardInsert</prop> 
 			</props>
 		</property>
 	</bean>
