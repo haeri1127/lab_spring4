@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -66,8 +67,8 @@ public class Board41Controller extends MultiActionController {
 		boardList = boardLogic.getBoardList(null);
 		Gson		g		= new Gson();
 		String		imsi	= g.toJson(boardList);
-		PrintWriter	out		= res.getWriter();
 		res.setContentType("application/json;charset=utf-8");
+		PrintWriter	out		= res.getWriter();
 		out.print(imsi);
 	}
 
@@ -81,7 +82,7 @@ public class Board41Controller extends MultiActionController {
 		int result = 0;
 		result = boardLogic.boardInsert(pmap);
 		if(result == 1) {
-			res.sendRedirect("./getBoardList.jsp");
+			res.sendRedirect("./getBoardList.sp4");
 		}
 		else {
 			res.sendRedirect("./boardInsertFail.jsp");
