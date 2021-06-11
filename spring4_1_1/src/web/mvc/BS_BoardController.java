@@ -20,10 +20,10 @@ import com.util.HashMapBinder;
 
 public class BS_BoardController extends MultiActionController {
 	Logger logger = Logger.getLogger(BS_BoardController.class);
-	private Board41Logic boardLogic = null;
+	private BS_BoardLogic bsboardLogic = null;
 	//setter메소드를 통하여 게으른 객체 주입
-	public void setBoardLogic(Board41Logic boardLogic) {
-		this.boardLogic = boardLogic;
+	public void setBsboardLogic(BS_BoardLogic bsboardLogic) {
+		this.bsboardLogic = bsboardLogic;
 	}
 	//request로 유지
 	//메소드를 정의하는 것은 가능하다.
@@ -37,7 +37,7 @@ public class BS_BoardController extends MultiActionController {
 	//ModelAndView 가 있는데 굳이 파라미터에 req,res가 있어야만 한다 그렇지 않으면 매핑을 해주지 않을  것이라고 
 	//말하는 것은 앞뒤가 맞지 않는 것입니다. 이상한 태도를 보이는 것이죠
 	//굳이 없어도 되는 것을 형식적으로 가지고 있어야 한다. doGet안에 있는 것이니까 너도 있어야 해줄거야? 라고 말하는 것이죠
-
+	
 	public ModelAndView getBoardList(HttpServletRequest req, HttpServletResponse res) 
 	throws Exception
 	{
@@ -46,10 +46,10 @@ public class BS_BoardController extends MultiActionController {
 		Map<String,Object> target = new HashMap<>();
 		hmb.bind(target);
 		List<Map<String,Object>> boardList = null;
-		boardList=boardLogic.getBoardList(target);//where bm_no=? and bm_title LIKE '%'||?||'%'
+		boardList=bsboardLogic.getBoardList(target);//where bm_no=? and bm_title LIKE '%'||?||'%'
 		logger.info("boardList:"+boardList);//
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("board/getBoardList");
+		mav.setViewName("bs_board/getBoardList");
 		mav.addObject("boardList", boardList);
 		//RequestDispatcher view = req.getRequestDispatcher("getBoardList.jsp");
 		//view.forward(req, res);
@@ -62,7 +62,7 @@ public class BS_BoardController extends MultiActionController {
 	{
 		logger.info("jsonGetBoardList 호출 성공");
 		List<Map<String,Object>> boardList = null;
-		boardList = boardLogic.getBoardList(null);
+		boardList = bsboardLogic.getBoardList(null);
 		Gson g = new Gson();
 		String imsi = g.toJson(boardList);
 		res.setContentType("application/json;charset=utf-8");
@@ -78,7 +78,7 @@ public class BS_BoardController extends MultiActionController {
 		//사용자가 입력한 값이나 서버에서 클라이언트에게 요청한 값 넘김.
 		hmb.bind(pmap);
 		int result = 0;
-		result = boardLogic.boardInsert(pmap);
+		result = bsboardLogic.boardInsert(pmap);
 		if(result == 1) {
 			//res.sendRedirect("./getBoardList.sp4");
 		}

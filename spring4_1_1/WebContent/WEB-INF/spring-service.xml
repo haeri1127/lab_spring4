@@ -7,4 +7,8 @@
 		<property name="boardMDao" ref="board-mdao"/>
 		<property name="boardSDao" ref="board-sdao"/>
 	</bean>
+	<bean id="bsboard-logic" class="web.mvc.BS_BoardLogic">
+		<property name="bsboardMDao" ref="bsboard-mdao"/>
+		<property name="bsboardSDao" ref="bsboard-sdao"/>
+	</bean>
 </beans>
