@@ -107,7 +107,7 @@
 %>
 		<tr>
 	            <td><%=rmap.get("BM_NO") %></td>
-	            <td><%=rmap.get("BM_TITLE") %></td>
+	            <td><a href="getBoardDetail.sp4?bm_no=<%=rmap.get("BM_NO") %>"><%=rmap.get("BM_TITLE") %></td>
 	            <td><%=rmap.get("BM_DATE") %></td>
 	            <td><%=rmap.get("BS_FILE") %></td>
 	            <td><%=rmap.get("BM_HIT") %></td>
