@@ -29,13 +29,32 @@ public class Board41Logic {
 	public int boardInsert(Map<String, Object> pmap) {
 		logger.info("boardInsert 호출 성공");
 		int result = 0;
+		int bm_no = 0;
+		int bm_group = 0;
 		int fileOk = 0;
-		boardMDao.boardMInsert(pmap);
-		//첨부파일이 있어?
-		if(pmap.containsKey("bs_file")) {
+		if(pmap.get("bm_group")!=null) { //read.jsp에서 댓글쓰기를 눌렀다.
+			bm_group = Integer.parseInt(pmap.get("bm_group").toString());
+		}
+		//댓글이야?
+		if(bm_group > 0) {
+			boardMDao.bmStepUpdate(pmap); //조건에 맞지 않으면 
+			pmap.put("bm_pos", Integer.parseInt(pmap.get("bm_pos").toString())+1);
+			pmap.put("bm_step", Integer.parseInt(pmap.get("bm_step").toString())+1);
+		}
+		//너 새글이구나
+		else {
+			bm_group = boardMDao.getBmGroup(); //새로운 채번번호를 내는 곳
+			pmap.put("bm_group", bm_group);
+			pmap.put("bm_pos", 0);
+			pmap.put("bm_step", 0);
+		}
+		if((pmap.get("bm_pos")!=null)&(pmap.get("bm_pos").toString().length()>0)) {
+			pmap.put("bm_no", bm_no);
+			pmap.put("bm_seq", 1);
 			fileOk = boardSDao.boardSInsert(pmap);
 		}
-		logger.info("fileOk : "+fileOk);
+		boardMDao.boardMInsert(pmap);
+		//첨부파일이 있어?
 		result = 1;
 		return result;
 	}
