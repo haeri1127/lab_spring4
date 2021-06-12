@@ -11,8 +11,11 @@
 		<config>WebContent/WEB-INF/spring-data.xml</config>
 		<config>WebContent/WEB-INF/spring-service.xml</config>
 		<config>src/local/di/sonataBean.xml</config>
+		<config>WebContent/WEB-INF/prac-service.xml</config>
+		<config>WebContent/WEB-INF/prac-data.xml</config>
 	</configs>
 	<autoconfigs>
+		<config>WebContent/WEB-INF/prac-servlet.xml</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>
