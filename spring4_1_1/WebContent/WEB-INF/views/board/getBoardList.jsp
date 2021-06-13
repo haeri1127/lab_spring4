@@ -38,7 +38,7 @@
 		//왜안돼 ㅅㅂ
 		// $('#dlg_ins').dialog('open');
 		$('#dlg_ins').dialog({
-			title:'글수정'
+			title:'글작성'
 		  ,width:720
 		  ,height:450
 		  ,closed:false
@@ -103,7 +103,15 @@
 		        {field:'BS_FILE',title:'첨부파일',width:230, align:'center'},
 		        {field:'BM_HIT',title:'조회수',width:100, align:'center'}
 		    ]]
+		
 		});
+	
+		/* $("#dg_board").on("click", "tr", function(){
+			alert($(this).find("td:eq(0)").text() );
+			alert($(this).find("td:eq(1)").text() );
+		}); */
+		
+		
 		/* $('#btn_sel').bind('click', function(){
 	        //alert('조회');
 	        boardSel();
@@ -186,7 +194,7 @@
 		            <input id="ins_content" name="bm_content" class="easyui-textbox" label="글 내용" labelPosition="top" style="width:100%; height: 100px;">
 		        </div>
 		        <div style="margin-bottom:20px">
-		            <input id="ins_pw" name="bm_pw" class="easyui-textbox" label="비밀번호" labelPosition="top" style="width:50%;">
+		            <input type="password" id="ins_pw" name="bm_pw" class="easyui-textbox" label="비밀번호" labelPosition="top" style="width:50%;">
 		        </div>
 	        </form>
 	        <div id="btn_boardIns">
