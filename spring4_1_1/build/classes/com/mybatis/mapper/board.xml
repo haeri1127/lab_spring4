@@ -61,6 +61,14 @@
 		WHERE bm_group = #{bm_group}
 		<![CDATA[ and bm_step > #{bm_step}]]>
 	</update>
+	<update id="boardUpdate" parameterType="map">
+		UPDATE board_master2019
+			SET bm_title = #{bm_title},
+				bm_writer = #{bm_writer},
+				bm_content = #{bm_content},
+				bm_pw = #{bm_pw}
+			WHERE bm_no = #{bm_no}
+	</update>
 	<select id="getBoardList" parameterType="map" resultType="map">
 		SELECT bm.bm_no, bm.bm_title, bm.bm_date, bs.bs_file, bm.bm_hit
 				,bm.bm_group, bm.bm_pos, bm.bm_step, bm.bm_email, bm.bm_pw

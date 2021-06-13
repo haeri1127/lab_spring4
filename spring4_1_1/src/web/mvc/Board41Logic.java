@@ -83,4 +83,20 @@ public class Board41Logic {
 		return result;
 	}
 
+	public void boardDelete(Map<String, Object> pmap) {
+		logger.info("Board41Logic ==> boardDelete() 호출 성공");
+		boardMDao.boardMDelete(pmap);
+		//파일이 있는 글이니? if문 작성해야하나..?
+		boardSDao.boardSDelete(pmap);
+	}
+
+	public List<Map<String, Object>> boardUpdate(Map<String, Object> pmap) {
+		logger.info("Board41Logic ==> boardUpdate() 호출 성공");
+		boardMDao.boardMUpdate(pmap); //값 update
+		
+		List<Map<String, Object>> boardList = null;
+		boardList = boardMDao.getBoardList(pmap);
+		return boardList;
+	}
+
 }

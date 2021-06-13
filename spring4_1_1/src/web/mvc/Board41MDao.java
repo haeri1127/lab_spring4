@@ -59,6 +59,16 @@ public class Board41MDao {
 		return result;
 	}
 
+	public void boardMDelete(Map<String, Object> pmap) {
+		logger.info("Board41MDao ==> boardMDelete() 호출 성공");
+		sqlSessionTemplate.delete("baordMDel", pmap);
+	}
+
+	public void boardMUpdate(Map<String, Object> pmap) {
+		logger.info("Board41MDao ==> boardMUpdate() 호출 성공");
+		sqlSessionTemplate.update("boardUpdate", pmap);
+	}
+
 //	public int getBmNo() {
 //		logger.info("Board41MDao ==> getBmno() 호출 성공");
 //		int result = 0;

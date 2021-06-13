@@ -5,8 +5,6 @@
 	StringBuilder path = new StringBuilder(request.getContextPath());
 	path.append("/");
 	
-	
-	
 	List<Map<String,Object>> empList = (List<Map<String,Object>>)request.getAttribute("haha");
 	
 	for(int i=0; i<empList.size(); i++){

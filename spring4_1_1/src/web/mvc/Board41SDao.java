@@ -31,6 +31,11 @@ public class Board41SDao {
 		return result;
 	}
 
+	public void boardSDelete(Map<String, Object> pmap) {
+		logger.info("Board41SDao ==> boardMDelete() 호출 성공");
+		sqlSessionTemplate.delete("baordSDel", pmap);
+	}
+
 //	public int getBsSeq() {
 //		int bs_seq = 0;
 //		bs_seq = sqlSessionTemplate.selectOne("getBsSeq");

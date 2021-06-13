@@ -106,5 +106,33 @@ public class Board41Controller extends MultiActionController {
 			res.sendRedirect("./boardInsertFail.jsp");
 		}
 	}
+	
+	public void boardDelete(HttpServletRequest req, HttpServletResponse res) 
+								throws Exception{
+		logger.info("boardDelete 호출 성공");
+		HashMapBinder		hmb		= new HashMapBinder(req);
+		Map<String, Object>	pmap	= new HashMap<>();
+		hmb.bind(pmap);
+		boardLogic.boardDelete(pmap);
+		res.sendRedirect("./getBoardList.sp4");
+	}
+	
+	public ModelAndView boardUpdate(HttpServletRequest req, HttpServletResponse res) 
+								throws Exception{
+		logger.info("boardUpdate 호출 성공");
+		HashMapBinder		hmb		= new HashMapBinder(req);
+		Map<String, Object>	pmap	= new HashMap<>();
+		hmb.bind(pmap);
+		
+		logger.info("pmap key : "+pmap.keySet()); //키가 안넘어온다...
+		
+		List<Map<String,Object>> boardUpdate = null;
+		boardUpdate = boardLogic.boardUpdate(pmap);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("board/read");
+		mav.addObject("boardDetail", boardUpdate);
+		return mav;
+	}
 
 }
