@@ -49,11 +49,11 @@
 	
 	//수정체크
 	function ins_check(){
-		let ins_title = document.getElementById('bm_title').value;
-		let ins_writer = document.getElementById('bm_writer').value;
-		let ins_email = document.getElementById('bm_email').value;
-		let ins_content = document.getElementById('bm_content').value;
-		let ins_pw = document.getElementById('bm_pw').value;
+		let ins_title = document.getElementById('ins_title').value;
+		let ins_writer = document.getElementById('ins_writer').value;
+		let ins_email = document.getElementById('ins_email').value;
+		let ins_content = document.getElementById('ins_content').value;
+		let ins_pw = document.getElementById('ins_pw').value;
 		
 		if(ins_title == "") {
 		    alert("제목을 입력해 주세요.");
@@ -171,22 +171,22 @@
 	<div id="dlg_ins" class="easyui-dialog" title="글쓰기" data-options="iconCls:'icon-save', closed:'true'" style="width:700px;height:650px;padding:10px">
 	     	<form id="form_ins" action="./boardInsert.sp4" method="get" onsubmit="return ins_check()">
 		        <div style="margin-bottom:20px">
-		            <input name="bm_title" class="easyui-textbox" label="제목" labelPosition="top" style="width:50%;">
+		            <input id="ins_title" name="bm_title" class="easyui-textbox" label="제목" labelPosition="top" style="width:50%;">
 		        </div>
 		        <div style="margin-bottom:20px">
-		            <input name="bm_writer" class="easyui-textbox" label="작성자" labelPosition="top" style="width:20%;">
+		            <input id="ins_writer" name="bm_writer" class="easyui-textbox" label="작성자" labelPosition="top" style="width:20%;">
 		        </div>
 		        <div style="margin-bottom:20px">
-		            <input name="bs_file" class="easyui-textbox" label="첨부파일" labelPosition="top" style="width:30%;">
+		            <input id="ins_file" name="bs_file" class="easyui-textbox" label="첨부파일" labelPosition="top" style="width:30%;">
 		        </div>
 		        <div style="margin-bottom:20px">
-		            <input name="bm_email" class="easyui-textbox" label="email" labelPosition="top"  data-options="prompt:'Enter a email address...',validType:'email'" style="width:50%;">
+		            <input id="ins_email" name="bm_email" class="easyui-textbox" label="email" labelPosition="top"  data-options="prompt:'Enter a email address...',validType:'email'" style="width:50%;">
 		        </div>
 		        <div style="margin-bottom:20px">
-		            <input name="bm_content" class="easyui-textbox" label="글 내용" labelPosition="top" style="width:100%; height: 100px;">
+		            <input id="ins_content" name="bm_content" class="easyui-textbox" label="글 내용" labelPosition="top" style="width:100%; height: 100px;">
 		        </div>
 		        <div style="margin-bottom:20px">
-		            <input name="bm_pw" class="easyui-textbox" label="비밀번호" labelPosition="top" style="width:50%;">
+		            <input id="ins_pw" name="bm_pw" class="easyui-textbox" label="비밀번호" labelPosition="top" style="width:50%;">
 		        </div>
 	        </form>
 	        <div id="btn_boardIns">

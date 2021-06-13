@@ -83,7 +83,8 @@
 		<if test='bm_no > 0'>
 			AND bm.bm_no = #{bm_no}
 		</if>
-		ORDER BY bm_group desc, bm_step asc
+		<!-- ORDER BY bm_group desc, bm_step asc -->
+		ORDER BY bm_no asc
 	</select>
 	<select id="getBoardMap" parameterType="map"
 		resultMap="boardMMap">

@@ -25,10 +25,10 @@ public class Board41MDao {
 	public void hitCount(Map<String, Object> pmap) {
 		logger.info("Board41MDao==> hitCount 호출 성공");
 		
-		for(String key: pmap.keySet()) {
+		/*for(String key: pmap.keySet()) {
 			logger.info("key : "+key);
 			logger.info("value : "+pmap.get(key));
-		}
+		}*/
 		sqlSessionTemplate.update("hitCount", pmap);
 	}
 
