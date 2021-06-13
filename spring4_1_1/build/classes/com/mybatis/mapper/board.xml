@@ -48,12 +48,13 @@
 		                            )
 	</insert>
 	<insert id="boardSInsert" parameterType="map">
-		INSERT INTO board_sub2019(bm_no,bs_seq,bs_file,bs_size) values(#{bm_no},#{bs_seq},#{bs_file},#{bs_size})
+		INSERT INTO board_sub2019(bm_no,bs_seq,bs_file,bs_size) 
+			values(#{bm_no},#{bs_seq},#{bs_file},#{bs_size})
 	</insert>
-	<update id="hitCount" parameterType="int">
+	<update id="hitCount" parameterType="map">
 		UPDATE board_master2019
 			SET bm_hit = bm_hit+1
-		WHERE bm_no = #{value}
+		WHERE bm_no = #{bm_no}
 	</update>
 	<update id="bmSetUpdate" parameterType="map">
 		UPDATE board_master2019
@@ -90,9 +91,6 @@
 		FROM board_master2019 bm
 		,board_sub2019 bs
 		WHERE bm.bm_no = bs.bm_no(+)
-	</select>
-	<select id="test" parameterType="map" resultType="string">
-		SELECT TO_CHAR(sysdate, 'YYYY-MM-DD') from dual
 	</select>
     
 </mapper>

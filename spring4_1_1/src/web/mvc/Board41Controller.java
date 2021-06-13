@@ -66,6 +66,7 @@ public class Board41Controller extends MultiActionController {
 		logger.info("bm_no : " + target.get("bm_no"));
 		List<Map<String,Object>> boardDetail = null;
 		boardDetail=boardLogic.getBoardList(target);
+		boardLogic.hitCount(target);
 		logger.info("boardDetail: " + boardDetail);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("board/read");

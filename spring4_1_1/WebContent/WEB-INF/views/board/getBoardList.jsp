@@ -49,19 +49,33 @@
 	
 	//수정체크
 	function ins_check(){
+		let ins_title = document.getElementById('bm_title').value;
+		let ins_writer = document.getElementById('bm_writer').value;
+		let ins_email = document.getElementById('bm_email').value;
+		let ins_content = document.getElementById('bm_content').value;
+		let ins_pw = document.getElementById('bm_pw').value;
 		
-		
-		if(form_ins.ins_title.value == "") {
+		if(ins_title == "") {
 		    alert("제목을 입력해 주세요.");
-		    form_ins.ins_title.focus();
 		    return false;
-		  }
-		  else if(form_ins.ins_content.value == "") {
+		    }
+		else if(ins_writer == "") {
+		    alert("작성자를 입력해 주세요.");
+		    return false;
+		    }
+		else if(ins_email == "") {
+		    alert("이메일을 입력해 주세요.");
+		    return false;
+		    }
+		else if(ins_content == "") {
 		    alert("내용을 입력해 주세요.");
-		    fr.pw.focus();
 		    return false;
-		  }
-		  else return true;
+		    }
+		else if(ins_pw == "") {
+		    alert("비밀번호를 입력해 주세요.");
+		    return false;
+		    }
+		else return true;
 	}
 	
 	function boardUpd(){
@@ -161,6 +175,9 @@
 		        </div>
 		        <div style="margin-bottom:20px">
 		            <input name="bm_writer" class="easyui-textbox" label="작성자" labelPosition="top" style="width:20%;">
+		        </div>
+		        <div style="margin-bottom:20px">
+		            <input name="bs_file" class="easyui-textbox" label="첨부파일" labelPosition="top" style="width:30%;">
 		        </div>
 		        <div style="margin-bottom:20px">
 		            <input name="bm_email" class="easyui-textbox" label="email" labelPosition="top"  data-options="prompt:'Enter a email address...',validType:'email'" style="width:50%;">

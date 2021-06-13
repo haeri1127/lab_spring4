@@ -17,9 +17,8 @@ public class Board41SDao {
 	public int boardSInsert(Map<String, Object> pmap) {
 		logger.info("Board41SDao ==> boardSInsert() 호출 성공");
 		int result = 0;
-		pmap.put("bs_seq", 1);
-		pmap.put("bs_size", 50);
-
+//		pmap.put("bs_seq", 1);
+//		pmap.put("bs_size", 50);
 //		try {
 //			result = sqlSessionTemplate.insert("boardSInsert", pmap);
 //		}
@@ -32,7 +31,7 @@ public class Board41SDao {
 	}
 
 	public void boardSDelete(Map<String, Object> pmap) {
-		logger.info("Board41SDao ==> boardMDelete() 호출 성공");
+		logger.info("Board41SDao ==> boardSDelete() 호출 성공");
 		sqlSessionTemplate.delete("baordSDel", pmap);
 	}
 
