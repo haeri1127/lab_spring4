@@ -31,6 +31,13 @@ public class Board41SDao {
 		return result;
 	}
 
+	public int boardSDelete(Map<String, Object> pmap) {
+		logger.info("boardMInsert 호출 성공");
+		int result = 0;
+		sqlSessionTemplate.insert("boardMDel", pmap);
+		return result;
+	}
+
 //	public int getBsSeq() {
 //		int bs_seq = 0;
 //		bs_seq = sqlSessionTemplate.selectOne("getBsSeq");

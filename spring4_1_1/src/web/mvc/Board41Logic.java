@@ -20,8 +20,17 @@ public class Board41Logic {
 	}
 
 	public List<Map<String, Object>> getBoardList(Map<String, Object> pmap) {
-		logger.info("getBoardLsit 호출 성공");
+		logger.info("getBoardLsit 호출 성공"+pmap.containsKey("gubun"));
 		List<Map<String, Object>> boardList = null;
+		String gubun = null;
+		if(pmap.get("gubun")!=null) {
+			gubun=pmap.get("gubun").toString();
+		}
+		if(gubun!=null && "detail".equals(gubun)) {
+			int bm_no = 0;
+			bm_no = Integer.parseInt(pmap.get("bm_no").toString());
+			boardMDao.hitCount(bm_no);
+		}
 		boardList = boardMDao.getBoardList(pmap);
 		return boardList;
 	}
@@ -29,23 +38,16 @@ public class Board41Logic {
 	// http://localhost:8000/board/boardInsert.sp4?bm_no=100&bm_title=연습&bs_file=a.txt&bm_writer=이순신&bm_email=test@hot.com&bm_content=내용&bm_pw=123
 	public int boardInsert(Map<String, Object> pmap) {
 		logger.info("Board41Logic ==> boardInsert() 호출 성공");
-
-//		int	boardMInsert	= 0;
-//		int	boardSInsert	= 0;
 		int	result			= 0;
 		int	bm_no			= 0;
 		int	bm_group		= 0;
-//		int	bs_seq			= 0;
-
 		// read.jsp에서 댓글쓰기를 눌렀다.
-		if (pmap.get("bm_group") != null) {
+		if (pmap.get("bm_group") != null) {//read.jsp눌렀다
 			bm_group = Integer.parseInt(String.valueOf(pmap.get("bm_group")));
-
 		}
-
 		// 댓글이야?
 		if (bm_group > 0) {
-			boardMDao.bmStepUpdate(pmap); // 조건에 맞지 않으면
+			boardMDao.bmStepUpdate(pmap); //조건에 맞지 않으면 처리가 생략될 수 있다.
 			pmap.put("bm_pos", Integer.parseInt(String.valueOf(pmap.get("bm_pos"))) + 1);
 			pmap.put("bm_step", Integer.parseInt(String.valueOf(pmap.get("bm_step"))) + 1);
 			//밸류오브로 바꿨음
@@ -61,12 +63,10 @@ public class Board41Logic {
 			pmap.put("bm_step", 0);
 		}
 
-		if ((pmap.get("bs_file") != null) && (String.valueOf(pmap.get("bs_file")).length() > 0)) {
-			pmap.put("bm_no", Integer.parseInt(String.valueOf(pmap.get("bm_no"))));
+		if ((pmap.get("bm_pos") != null) && (String.valueOf(pmap.get("bm_pos")).length() > 0)) {
+			pmap.put("bm_no", bm_no);
 			pmap.put("bm_seq", 1);
 			boardSDao.boardSInsert(pmap);	
-			
-			
 			//			pmap.put("bm_no", bm_no);
 //			bs_seq = boardSDao.getBsSeq();
 			// 임시로 상수값 넣어둠.
@@ -82,5 +82,6 @@ public class Board41Logic {
 		result = 1;
 		return result;
 	}
+
 
 }

@@ -41,21 +41,24 @@ public class Board41MDao {
 //			result = -1;
 //		}
 		result = 1;
-		sqlSessionTemplate.insert("boardMInsert",pmap);
+		sqlSessionTemplate.insert("boardMInsert", pmap);
 		return result;
 	}
 
 	public void bmStepUpdate(Map<String, Object> pmap) {
 		logger.info("Board41MDao ==> bmStepUpdate() 호출 성공");
 		sqlSessionTemplate.update("bmSetUpdate", pmap);
+	}
 
+	public void hitCount(int bm_no) {
+		logger.info("hitCount 호출 성공");
+		sqlSessionTemplate.update("hitCount", bm_no);
 	}
 
 	public int getBmGroup() {
 		logger.info("Board41MDao ==> getBmGroup() 호출 성공");
 		int result = 0;
 		result = sqlSessionTemplate.selectOne("getBmGroup");
-
 		return result;
 	}
 

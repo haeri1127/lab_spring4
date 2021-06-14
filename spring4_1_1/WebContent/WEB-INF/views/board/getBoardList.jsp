@@ -31,10 +31,10 @@
 				alert("조회 호출 성공");
 			}
 		});
-		
 	}
 	function boardIns(){
-		
+		console.log("입력창 호출");
+	    $('#dlg_ins').dialog('open');
 	}
 	function boardUpd(){
 		
@@ -124,5 +124,9 @@
 		<a id="btn_upd" href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true">수정</a>
 		<a id="btn_del" href="#" class="easyui-linkbutton" iconCls="icon-cancel" plain="true">삭제</a>
 	</div>
+	<!--=========================== [[글쓰기 화면 시작]] =============================-->
+    <div id="dlg_ins" class="easyui-dialog" title="글쓰기">
+    </div>    
+    <!--=========================== [[글쓰기 화면   끝 ]] =============================--> 
 </body>
 </html>

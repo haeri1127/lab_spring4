@@ -18,15 +18,9 @@ public class HashMapBinder {
 	}
 
 	public void bind(Map<String, Object> target) { // 객체 주입 받는다.
-		Enumeration en = request.getParameterNames(); // 이름을 가져오는 메소드
+		Enumeration en = request.getParameterNames(); // 이름을 가져오는 메소드 //배열 구조체 묶음
 		// <input type="text" name="mem_id"
 		while (en.hasMoreElements()) { // while (true) 주면 무한 루프
-			
-			//target(0) bm_no, 100
-			//target(1) bm_writer, 이순신
-			//target(2) bs_file, a.txt
-			
-			
 			String key = (String) en.nextElement(); // (String) casting 연산자 -> 강제 형변환
 			logger.info("value:" + request.getParameter(key)); 
 			target.put(key, HangulConversion.toUTF(request.getParameter(key)));// ※주의!! 상수가 아닌 변수를 사용!!!

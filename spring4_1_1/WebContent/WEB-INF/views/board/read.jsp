@@ -48,6 +48,9 @@
 	function repleForm(){
 		$("#dlg_boardAdd").dialog('open');
 	}
+	function boardList(){
+		location.href="./getBoardList.sp4";
+	}
 </script>
 </head>
 <body>
