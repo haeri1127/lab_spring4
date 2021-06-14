@@ -23,10 +23,10 @@ public class Board41Logic {
 		logger.info("getBoardLsit 호출 성공"+pmap.containsKey("gubun"));
 		List<Map<String, Object>> boardList = null;
 		String gubun = null;
-		if(pmap.get("gubun")!=null) {
-			gubun=pmap.get("gubun").toString();
+		if(pmap.get("gubun")!=null) { //그저 조회만 했을 경우 gubun = null이기 때문에 실행 ㄴㄴ
+			gubun=pmap.get("gubun").toString(); //detail
 		}
-		if(gubun!=null && "detail".equals(gubun)) {
+		if(gubun!=null && "detail".equals(gubun)) { //그저 조회만 했을 경우 gubun = null이기 때문에 실행 ㄴㄴ -> hitCount실행 ㄴㄴ 니까 bm_no값이 증가하지 않음.
 			int bm_no = 0;
 			bm_no = Integer.parseInt(pmap.get("bm_no").toString());
 			boardMDao.hitCount(bm_no);
