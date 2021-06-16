@@ -44,7 +44,8 @@
 		INSERT INTO board_master2019(bm_no, bm_title, bm_writer, bm_email
 		                           , bm_content, bm_date, bm_group, bm_pos, bm_step, bm_pw) 
 		                      values(#{bm_no},#{bm_title},#{bm_writer},#{bm_email}
-		                           , #{bm_content}, to_char(sysdate, 'YYYY-MM-DD'), #{bm_group},0,0,#{bm_pw}
+		                           , #{bm_content}, to_char(sysdate, 'YYYY-MM-DD')
+		                           , #{bm_group},#{bm_pos},#{bm_step},#{bm_pw}
 		                            )
 	</insert>
 	<insert id="boardSInsert" parameterType="map">

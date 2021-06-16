@@ -62,6 +62,13 @@ public class Board41MDao {
 		return result;
 	}
 
+	public int getBmNo() {
+		logger.info("Board41MDao ==> getBmNo() 호출 성공");
+		int result = 0;
+		result = sqlSessionTemplate.selectOne("getBmNo");
+		return result;
+	}
+
 //	public int getBmNo() {
 //		logger.info("Board41MDao ==> getBmno() 호출 성공");
 //		int result = 0;

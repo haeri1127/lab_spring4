@@ -40,6 +40,8 @@ public class Board41Logic {
 		logger.info("Board41Logic ==> boardInsert() 호출 성공");
 		int	result			= 0;
 		int	bm_no			= 0;
+		bm_no = boardMDao.getBmNo();
+		pmap.put("bm_no",bm_no);
 		int	bm_group		= 0;
 		// read.jsp에서 댓글쓰기를 눌렀다.
 		if (pmap.get("bm_group") != null) {//read.jsp눌렀다
@@ -54,31 +56,19 @@ public class Board41Logic {
 		}
 		// 새 글일 경우
 		else {
-//			bm_no = boardMDao.getBmNo();
-//			pmap.put("bm_no", bm_no);
 			bm_group = boardMDao.getBmGroup(); // 새로운 채번번호를 내는 곳
-//			pmap.put("bm_group", bm_group);
 			pmap.put("bm_group", bm_group);
 			pmap.put("bm_pos", 0);
 			pmap.put("bm_step", 0);
 		}
-
-		if ((pmap.get("bm_pos") != null) && (String.valueOf(pmap.get("bm_pos")).length() > 0)) {
+		//첨부파일이 있어?
+		if ((pmap.get("bs_file") != null) && (String.valueOf(pmap.get("bs_file")).length() > 0)) {
+			logger.info("첨부파일  경유");
 			pmap.put("bm_no", bm_no);
-			pmap.put("bm_seq", 1);
+			pmap.put("bm_seq", 1);       //엥?
 			boardSDao.boardSInsert(pmap);	
-			//			pmap.put("bm_no", bm_no);
-//			bs_seq = boardSDao.getBsSeq();
-			// 임시로 상수값 넣어둠.
-//			pmap.put("bm_seq", 1);
-//			boardSInsert = boardSDao.boardSInsert(pmap);
 		}
-//		boardMInsert = boardMDao.boardMInsert(pmap);
 		boardMDao.boardMInsert(pmap);
-
-//		if (boardMInsert != -1 && boardSInsert != -1) {
-//			result = 1;
-//		}
 		result = 1;
 		return result;
 	}
