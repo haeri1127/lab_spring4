@@ -26,6 +26,8 @@
 				<!-- 이 URL이 어떤 것을 참조하고 있는지 -->
 				<!-- 이 URL요청 값을 저 컨트롤러에 던지셈 -->
 				<prop key="/board/boardInsert.sp4">board-controller</prop>
+				<prop key="/board/boardUpdate.sp4">board-controller</prop>
+				<!-- <prop key="/board/boardDelete.sp4">board-controller</prop> -->
 				<prop key="/board/getBoardList.sp4">board-controller</prop>
 				<prop key="/board/getBoardDetail.sp4">board-controller</prop> 
 				<prop key="/board/jsonGetBoardList.sp4">board-controller</prop>
@@ -43,6 +45,8 @@
 		<property name="mappings"> <!-- property에 있는건 이거 토씨 하나 절대 틀리면 안됨.  -->
 			<props>
 				<prop key="/board/boardInsert.sp4">boardInsert</prop>
+				<prop key="/board/boardUpdate.sp4">boardUpdate</prop> <!-- 아직메소드 없음 -->
+				<!-- <prop key="/board/boardDelete.sp4">boardDelete</prop> -->
 				<prop key="/board/getBoardList.sp4">getBoardList</prop> 
 				<prop key="/board/getBoardDetail.sp4">getBoardDetail</prop> 
 				<prop key="/board/jsonGetBoardList.sp4">jsonGetBoardList</prop> 

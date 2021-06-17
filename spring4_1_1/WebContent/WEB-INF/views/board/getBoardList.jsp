@@ -36,6 +36,10 @@
 		console.log("입력창 호출");
 	    $('#dlg_ins').dialog('open');
 	}
+	function insAction(){
+		console.log("입력액션 호출");
+		$('#board_ins').submit();
+    }
 	function boardIns(){
 
 	}
@@ -44,10 +48,6 @@
 	}
 	function boardDel(){
 		
-	}
-	function insAction(){
-		console.log("입력액션 호출");
-	    $('#board_ins').submit();
 	}
 </script>
 </head>
@@ -87,7 +87,7 @@
 	    });
 	});
 </script>
-	<table id="dg_board" class="easyui-datagrid" data-options="title:'게시판',toolbar:'#tb_board'" style="width:1000px;height:350px">
+	<table id="dg_board" class="easyui-datagrid" data-options="title:'게시판',toolbar:'#tb_board', width:1000">
 		<thead>
 	        <tr>
 	            <th data-options="field:'BM_NO', width:100">글번호</th>
@@ -114,6 +114,7 @@
 %>
 		<tr>
 	            <td><%=rmap.get("BM_NO") %></td>
+	            <td>
 <!-- 너 댓글이니? -->
 <%
 	String imgPath = "\\board\\";
@@ -128,7 +129,7 @@
 <%
 	}////////////end of if
 %>
-	            <td><a href="getBoardDetail.sp4?bm_no=<%=rmap.get("BM_NO") %>"><%=rmap.get("BM_TITLE") %></a></td>
+	            <a href="getBoardDetail.sp4?bm_no=<%=rmap.get("BM_NO") %>"style="text-decoration:none;"><%=rmap.get("BM_TITLE") %></a></td>
 	            <td><%=rmap.get("BM_DATE") %></td>
 	            <td><a href="download.jsp?bs_file=<%=rmap.get("BS_FILE") %>" style="text-decoration:none;"><%=rmap.get("BS_FILE") %></a></td>
 	            <td><%=rmap.get("BM_HIT") %></td>
@@ -141,13 +142,17 @@
 	</table>
 	<div id="tb_board" style="padding:2px 5px;">
 		<a id="btn_sel" href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true">조회</a>
-		<a id="btn_ins" href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true">입력</a>
+		<a id="btn_ins" href="javascript:ins()" class="easyui-linkbutton" iconCls="icon-add" plain="true">입력</a>
 		<a id="btn_upd" href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true">수정</a>
 		<a id="btn_del" href="#" class="easyui-linkbutton" iconCls="icon-cancel" plain="true">삭제</a>
 	</div>
 	<!--=========================== [[글쓰기 화면 시작]] =============================-->
     <div id="dlg_ins" class="easyui-dialog" title="글쓰기" data-options="iconCls:'icon-save', closed:'false', footer:'#ft_ins'" style="width:600px;height:650px;padding:10px">
-    	<form id="board_ins" method="get" action="boardInsert.sp4">
+    	<form id="board_ins" method="post" enctype="multipart/form-data" action="boardInsert.sp4">
+    	<input type="hidden" name="bm_no" value="0">
+    	<input type="hidden" name="bm_group" value="0">
+    	<input type="hidden" name="bm_pos" value="0">
+    	<input type="hidden" name="bm_step" value="0">
     	<div style="margin-bottom:20px">
             <input class="easyui-textbox" name="bm_title" label="제목:" labelPosition="top" data-options="prompt:'제목'" style="width:400px;">
         </div>
