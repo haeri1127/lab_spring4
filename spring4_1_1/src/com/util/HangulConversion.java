@@ -6,7 +6,7 @@ public class HangulConversion {
 			return null;
 
 		try {
-			return new String(en.getBytes("8859-1"), "utf-8");
+			return new String(en.getBytes("8859_1"), "utf-8");
 		}
 		catch (Exception e) {
 			return en;

@@ -66,6 +66,7 @@ public class HashMapBinder {
 			
 		}
 	}///////////////////// end of multiBind
+	
 	public void bindPost(Map<String,Object> target) {
 		Enumeration en = request.getParameterNames();//배열 구조체 묶음
 		//<input type="text" name="mem_id"

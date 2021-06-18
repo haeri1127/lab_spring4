@@ -18,10 +18,10 @@
 		<result property="bs_file" column="bs_file" />
 		<result property="bs_size" column="bs_size" />
 	</resultMap>
-	<delete id="baordMDel" parameterType="map">
+	<delete id="boardMDelete" parameterType="map">
 		DELETE FROM board_master2019 WHERE bm_no=#{bm_no}
 	</delete>
-	<delete id="baordSDel" parameterType="map">
+	<delete id="baordSDelete" parameterType="map">
 		DELETE FROM board_sub2019 WHERE bm_no=#{bm_no}
 	</delete>
 	<select id="getBmNo" parameterType="int" resultType="int">
@@ -62,8 +62,17 @@
 		WHERE bm_group = #{bm_group}
 		<![CDATA[ and bm_step > #{bm_step}]]>
 	</update>
+	<update id="boardMUpdate" parameterType="map">
+		UPDATE board_master2019
+		   SET bm_title = #{bm_title}
+			  ,bm_writer = #{bm_writer}
+			  ,bm_content = #{bm_content}
+			  ,bm_email = #{bm_email}
+			  ,bm_pw = #{bm_pw}
+		 WHERE bm_no = #{bm_no}
+	</update>
 	<select id="getBoardList" parameterType="map" resultType="map">
-		SELECT bm.bm_no, bm.bm_title, bm.bm_date, bs.bs_file, bm.bm_hit
+		SELECT bm.bm_no, bm.bm_title, bm.bm_date, NVL(bs.bs_file,'') bs_file, bm.bm_hit
 				,bm.bm_group, bm.bm_pos, bm.bm_step, bm.bm_email, bm.bm_pw
 				,bm.bm_writer, bm.bm_content
 		FROM board_master2019 bm

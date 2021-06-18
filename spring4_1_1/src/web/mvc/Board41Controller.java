@@ -56,13 +56,14 @@ public class Board41Controller extends MultiActionController {
 		// view.forward(req, res);
 		return mav;
 	}
+
 	/*****************************************************************************
 	 * 게시글 상세보기 구현
+	 * 
 	 * @param req
 	 * @param res
 	 * @return ModelAndView
-	 * @throws Exception
-	 * 주의사항 - 전체조회와 하나로 합쳐 지니까 target에 구분값을 추가할것.
+	 * @throws Exception 주의사항 - 전체조회와 하나로 합쳐 지니까 target에 구분값을 추가할것.
 	 ****************************************************************************/
 	public ModelAndView getBoardDetail(HttpServletRequest req, HttpServletResponse res)
 								throws Exception {
@@ -72,12 +73,25 @@ public class Board41Controller extends MultiActionController {
 		hmb.bind(target); // bm_no값 담음.
 		target.put("gubun", "detail");
 		logger.info("bm_no : " + target.get("bm_no"));
-		List<Map<String,Object>> boardDetail = null;
-		boardDetail=boardLogic.getBoardList(target);
+		List<Map<String, Object>> boardDetail = null;
+		boardDetail = boardLogic.getBoardList(target);
 		logger.info("boardDetail: " + boardDetail);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("board/read");
 		mav.addObject("boardDetail", boardDetail);
+		return mav;
+	}
+
+	public ModelAndView updateForm(HttpServletRequest req, HttpServletResponse res)
+								throws Exception {
+		logger.info("Board41Controller ==> updateForm() 호출 성공");
+		HashMapBinder		hmb		= new HashMapBinder(req);
+		Map<String, Object>	target	= new HashMap<>();
+		hmb.bindPost(target); // bm_no값 담음.
+		logger.info("bm_no : " + target.get("bm_no"));
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("board/updateForm");
+		mav.addObject("target", target);
 		return mav;
 	}
 
@@ -105,11 +119,48 @@ public class Board41Controller extends MultiActionController {
 		HashMapBinder		hmb		= new HashMapBinder(req);
 		Map<String, Object>	pmap	= new HashMap<>();
 		// 사용자가 입력한 값이나 서버에서 클라이언트에게 요청한 값 넘김.
-		//hmb.bindPost(pmap);
+		// hmb.bindPost(pmap);
 		hmb.multiBind(pmap);
 		int result = 0;
 		result = boardLogic.boardInsert(pmap);
 
+		if (result == 1) {
+			res.sendRedirect("./getBoardList.sp4");
+		}
+		else {
+			res.sendRedirect("./boardInsertFail.jsp");
+		}
+	}
+
+	public void boardUpdate(HttpServletRequest req, HttpServletResponse res)
+								throws Exception {
+		logger.info("boardUpdate 호출 성공");
+		HashMapBinder		hmb		= new HashMapBinder(req);
+		Map<String, Object>	pmap	= new HashMap<>();
+		// 사용자가 입력한 값이나 서버에서 클라이언트에게 요청한 값 넘김.
+		// hmb.bindPost(pmap);
+		hmb.bindPost(pmap);
+		int result = 0;
+		result = boardLogic.boardUpdate(pmap);
+		result=1;
+		if (result == 1) {
+			res.sendRedirect("./getBoardList.sp4");
+		}
+		else {
+			res.sendRedirect("./boardInsertFail.jsp");
+		}
+	}
+	public void boardDelete(HttpServletRequest req, HttpServletResponse res)
+								throws Exception {
+		logger.info("boardDelete 호출 성공");
+		HashMapBinder		hmb		= new HashMapBinder(req);
+		Map<String, Object>	pmap	= new HashMap<>();
+		// 사용자가 입력한 값이나 서버에서 클라이언트에게 요청한 값 넘김.
+		// hmb.bindPost(pmap);
+		hmb.bindPost(pmap);
+		int result = 0;
+		result = boardLogic.boardDelete(pmap);
+		result=1;
 		if (result == 1) {
 			res.sendRedirect("./getBoardList.sp4");
 		}
