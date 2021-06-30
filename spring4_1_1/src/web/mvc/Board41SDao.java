@@ -19,10 +19,10 @@ public class Board41SDao {
 		int result = 0;
 		pmap.put("bs_seq", 1);
 		pmap.put("bs_size", 50);
-		for(String key:pmap.keySet()) {
-			logger.info("key : "+key);
-			logger.info("value : "+pmap.get(key));
-		}
+//		for(String key:pmap.keySet()) {
+//			logger.info("key : "+key);
+//			logger.info("value : "+pmap.get(key));
+//		}
 		
 
 //		try {

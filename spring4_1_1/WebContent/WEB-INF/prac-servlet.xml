@@ -8,10 +8,16 @@
 		<property name="pracEmpLogic" ref="pracemp-logic"/>
 	</bean>
 	
+	<bean id="test-controller" class="test.TestController">
+		<property name="methodNameResolver" ref="test-resolver"/>
+		<property name="testLogic" ref="test-logic"/>
+	</bean>
+	
 	<bean id = "url-mapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<props>
 				<prop key="/prac/getEmpList.hr4">pracemp-controller</prop>
+				<prop key="/test/getTest.hr4">test-controller</prop>
 			</props>
 		</property>
 	</bean>
@@ -24,6 +30,17 @@
 			</props>
 		</property>
 	</bean>
+	
+	<bean id="test-resolver" class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver"> <!-- 이거를 추천!!!! -->
+		<property name="mappings">
+			<props>
+				<prop key="/test/getTest.hr4">getTest</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
+	
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/"/>

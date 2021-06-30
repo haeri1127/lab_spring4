@@ -11,6 +11,7 @@
 		size = boardList.size();		
 	}
 	out.print("size : "+size);
+	
 %> 
 <!DOCTYPE html>
 <html>

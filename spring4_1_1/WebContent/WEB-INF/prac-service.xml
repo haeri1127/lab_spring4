@@ -6,5 +6,9 @@
 	<bean id="pracemp-logic" class="prac.emp.PracEmpLogic">
 		<property name="pracEmpDao" ref="pracemp-dao"/>
 	</bean>
+	
+	<bean id="test-logic" class="test.TestLogic">
+		<property name="testDao" ref="test-dao"/>
+	</bean>
 
 </beans>
